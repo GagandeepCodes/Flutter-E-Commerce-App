@@ -1,0 +1,36 @@
+{
+    "products" : [
+        {
+             "id": "Lovebabbar",
+            "name": "Pointers in C++",
+            "desc": "All about pointers with questions",
+            "color": "Black",
+            "price": 5,
+            "image": "https://i.ytimg.com/vi/YHwEIfrXZgE/maxresdefault.jpg"
+        },
+        {
+            "id": "Lovebabbar",
+           "name": "DSA Placement course",
+           "desc": "All DSA topics covered ",
+           "color": "Black",
+           "price": 12,
+           "image": "https://i.ytimg.com/vi/w9AbHXPKp_s/maxresdefault.jpg"
+        },
+        {
+             "id": "Lovebabbar",
+            "name": "Master Recursion",
+            "desc": "A full dedicated course on recursion",
+            "color": "Black",
+            "price": 8,
+            "image": "https://i.ytimg.com/vi/zg8Y1oE4qYQ/maxresdefault.jpg"
+        },
+        {
+            "id": "Lovebabbar",
+            "name": "Dynamic Programming",
+            "desc": "Complete roadmap on D programming",
+            "color": "Black",
+            "price": 10,
+            "image": "https://i.ytimg.com/vi/4uOVJuhf4Qg/maxresdefault.jpg"
+        }
+    ]
+}

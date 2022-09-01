@@ -1,14 +1,6 @@
 class CatalogModel {
   // we make it static so that we can directly access it using catalog Model
-  static final items = [
-  Item(
-    id: "Lovebabbar",
-    name: "Pointersin C++",
-    desc: "All about pointers with questions",
-    color: "Black",
-    price: 5,
-    image: "https://i.ytimg.com/vi/YHwEIfrXZgE/maxresdefault.jpg",
-  )
+  static List<Item> items = [
   ];
 }
 class Item{
@@ -18,11 +10,31 @@ class Item{
   final num price;
   final String color;
   final String image;
-
+  //constructor
   Item({required this.id,
   required  this.name,
   required  this.desc,
   required this.price,
   required  this.color,
   required  this.image});
+  
+  factory Item.formMap(Map<String,dynamic> map){
+    return Item(
+      id: map["id"],
+      price: map["price"],
+      name : map["name"],
+      desc: map["desc"],
+      color: map["color"],
+      image: map["image"],
+    );
+  }
+
+  toMap() => {
+      "id": id,
+      "price": price,
+      "name" : name,
+      "desc" : desc,
+      "color": color,
+      "image": image
+  };
 }
