@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -43,7 +45,7 @@ class _HomepageState extends State<Homepage> {
         // elevation: 0.0,
         // iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          "Catalog App",
+          "Codehelp",
         //  style: TextStyle(
         //   color: Colors.blue,
         //   fontWeight: FontWeight.bold,
@@ -52,12 +54,45 @@ class _HomepageState extends State<Homepage> {
       ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)? ListView.builder(
-            itemCount: CatalogModel.items.length,
-            itemBuilder: (context , index){
-              return ItemWidget(item :CatalogModel.items[index]);
-            }
-          ):
+          child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+          ?GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16
+              ),
+             itemBuilder:(context,index){
+              final item = CatalogModel.items[index];
+              return Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                child: GridTile(
+                  header: Container(
+                    child: Text(
+                      item.name,
+                      style: TextStyle(color: Colors.white),
+                      ),
+                      padding:EdgeInsets.all(7.2),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                    ),
+                  child: Image.network(item.image),
+                  footer: Container(
+                    child: Text(
+                      item.price.toString(),
+                      style: TextStyle(color: Colors.black),
+                      ),
+                      padding:EdgeInsets.all(7.2),
+                    decoration: BoxDecoration(
+                      color: Colors.white54
+                    ),
+                    ),
+                  )
+                );
+             } ,
+             itemCount: CatalogModel.items.length,
+             )
+          :
           Center(
             child: CircularProgressIndicator(),
           ),
