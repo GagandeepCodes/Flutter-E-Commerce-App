@@ -1,13 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:myfirstproject/models/catalog.dart';
 import 'package:myfirstproject/widgets/drawer.dart';
 import 'package:myfirstproject/widgets/item_widget.dart';
 import 'package:myfirstproject/widgets/themes.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -41,6 +43,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
     return Scaffold(
+      backgroundColor: MyTheme.creamColor,
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
@@ -86,6 +89,7 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
+      itemCount: CatalogModel.items.length,
       itemBuilder: (context, index){
         final catalog = CatalogModel.items[index];
         return CatalogItem(catalog :catalog);
@@ -104,9 +108,31 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          Image.network(catalog.)
+          CatalogImage(image: catalog.image),
+          Expanded(
+            child: Column(
+            children: [
+              catalog.name.text.make(),
+            ],
+          ))
         ],
         )
-    ).white.square(200).make();
+    ).white.rounded.square(108).make().py16();
+  }
+}
+
+class CatalogImage extends StatelessWidget {
+
+  final String image;
+  const CatalogImage({
+    Key? key,
+    required this.image,
+  }) :  super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+            image,
+          ).box.p8.color(MyTheme.creamColor).make().p16();
   }
 }
